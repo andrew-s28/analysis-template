@@ -30,11 +30,11 @@ Follow these steps for version controlling your Python notebooks in this reposit
 
    install pre-commit hooks (if pre-commit is not installed, try `uv tool install pre-commit`)
 
-3. `git add notebooks/example.ipynb && git commit -m 'initial commit'`
+3. `git add notebooks/example.ipynb && git commit -m 'adds new notebook'`
 
    this command should fail, but generates a Python file using [jupytext](https://jupytext.readthedocs.io/en/latest/index.html).
 
-4. `git add notebooks/example.ipynb notebooks/python/example.py && git commit -m 'initial commit'`
+4. `git add notebooks/example.ipynb notebooks/python/example.py && git commit -m 'adds new notebook'`
 
    add and commit new Python file and updated notebook, this time the command should succeed. Note you may want to double check the files after step 2 to ensure they were generated and formatted correctly.
 
