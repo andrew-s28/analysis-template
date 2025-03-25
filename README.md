@@ -11,6 +11,8 @@ This template was primarily designed because I got sick of dealing with a millio
 - Simplify dependency management
 - Encourage clean, consistent code
 
+The primary advantage of this specific workflow over other scientific analysis packaging templates is the use of pre-commit hooks. The only thing you have to do in this workflow is *commit to Git* - the pre-commit hooks *don't allow* any un-formatted or un-converted commits to proceed. No additional command line instructions to learn - just use Git!
+
 ## Getting Started
 
 To use this template:
