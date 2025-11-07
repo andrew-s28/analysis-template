@@ -5,6 +5,7 @@ This repository serves as a template for organizing and storing scientific analy
 ## Purpose
 
 This template was primarily designed because I got sick of dealing with a million different Python notebooks, none of which were being version controlled (who hasn't had `analysis-updated-new_data_v3.ipynb`?). By providing a template directory structure and commit workflow, future analyses will:
+
 - Maintain organized scientific analysis code
 - Promote reproducibility in research
 - Include version control for Python notebooks
@@ -46,33 +47,19 @@ Though it should work the same, it is recommended not to edit Python scripts in 
 
 ## Managing Dependencies with uv
 
-In order to run your Python notebooks, you will need some third-party libraries. `uv` is an excellent tool for managing these dependencies. For more details on installation and usage, see the [uv docs](https://docs.astral.sh/uv/). Note that the `pyproject.toml` is setup to require `python>=3.11`, so make sure to change that if you have a dependency that requires an older Python version.
+In order to run your Python notebooks, you will need some third-party libraries. `uv` is an excellent tool for managing these dependencies. For more details on installation and usage, see the [uv docs](https://docs.astral.sh/uv/). Note that the `pyproject.toml` is setup to require `python>=3.12`, so make sure to change that if you have a dependency that requires an older Python version. It also comes pre-installed with `ipykernel`, which is required for running Python notebooks.
 
-1. `uv add ipykernel`
+1. `uv sync`
 
-   Adds `ipykernel` dependency to `pyproject.toml` (you always need `ipykernel` to run notebooks!)
+   Initialize a `.venv` with the dependencies from `pyproject.toml` installed (from here it should be synced automatically). Make sure to select this virtual environment when running Python notebooks!
 
-2. `uv sync`
+2. `uv pip install -e .`
 
-   Initialize a `.venv` with the dependencies from `pyproject.toml` installed (from here it should be synced automatically)
+   The `scripts` directory is setup to be included as an editable package in this project, to install simply run  from the root directory. You can then import from any modules in the `scripts` subdirectory.
 
-3. `.venv/bin/activate` (Bash) or `.\.venv\Scripts\activate` (Powershell)
+3. `uv add numpy`
 
-   Activates virtual environment (make sure to select this as the kernel in VSCode)
-
-Some packages with non-Python dependencies may require conda environment management. In that case, don't use `uv`, instead prefer:
-
-1. `conda create -n analysis python=3.12 pip && conda activate analysis`
-   
-   Create and activate conda environment with specific Python version
-
-2. `conda install ipykernel`
-   
-   Install `ipykernel` dependency to `analysis` environment (you always need `ipykernel` to run notebooks!)
-
-3. `conda env export > environment.yml`
-   
-   Save dependencies once environment is setup (make sure to commit the new `environment.yml` file!)
+   From here, add additional dependencies as needed. `uv` will automatically update your virtual environment.
 
 ## Directory Structure
 
